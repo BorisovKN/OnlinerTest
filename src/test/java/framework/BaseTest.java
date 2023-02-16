@@ -7,18 +7,22 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    public WebDriver driver;
+    //public WebDriver driver;
+    public Browser driver = new Browser();
     @BeforeMethod
     public void setup(){
-        driver = DriverFactory.getDriver();
-        driver.manage().window().maximize();
+//        driver = DriverFactory.getDriver();
+//        driver.manage().window().maximize();
+//        driver.get(PropertyReader.getProperty("base.URL"));
+//        driver.manage().timeouts().implicitlyWait(new PropertyReader("config.properties").getIntProperty("timeout.for.page.load"), TimeUnit.SECONDS);
+        driver.getInstance();
+        driver.windowMaximize();
         driver.get(PropertyReader.getProperty("base.URL"));
-        driver.manage().timeouts().implicitlyWait(new PropertyReader("config.properties").getIntProperty("timeout.for.page.load"), TimeUnit.SECONDS);
     }
     @AfterMethod(alwaysRun = true, description = "Closing browser")
     public void tearDown(){
-        if (driver != null){
-            driver.quit();
+//        if (driver != null){
+//            driver.quit();
+        driver.exit();
         }
     }
-}
