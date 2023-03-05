@@ -3,8 +3,8 @@
 <suite name="Onliner" parallel="tests" thread-count="1">
     <test name="test">
         <classes>
-            <class name="onlinerTest"/>
-            <class name="onliner.NavigationTest"/>
+            <class name="onliner.tests.NavigationTest"/>
+            <class name="onliner.tests.FiltrationAuto"/>
         </classes>
     </test>
 </suite>
